@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Convert Numbers to Words</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h1 {
+            margin: 0.5em;
+        }
+        #main {
+            margin: 3em;
+        }
+    </style>
+</head>
+<body>
+    <h1>1 to 1000 in words because i hate myself</h1>
+    <div id="main">
+
+    </div>
+    <script>
+        
+        let numbers = [];
+
+        const oneName = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eightteen', 'nineteen']
+        const tenName = ['', 'ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+        const hundredName = ['', 'one hundred', 'two hundred', 'three hundred', 'four hundred', 'five hundred', 'six hundred', 'seven hundred', 'eight hundred', 'nine hundred']
+        const thousandName = ['', 'one thousand']
+
+        for (let i = 0; i <= 1000; i++) {
+
+            numbers.push(i);
+
+            if (i < 20) {
+                var text = oneName[numbers[i]];
+            } else if (i < 100) {
+                var text = tenName[numbers[Math.floor(i / 10)]] + " " + oneName[numbers[i - (Math.floor(i / 10) * 10)]];
+            } else if (i - (Math.floor(i / 100) * 100) < 20 && i != 1000) {
+                var text = hundredName[numbers[Math.floor(i / 100)]] + " " + oneName[numbers[i - (Math.floor(i / 100) * 100)]];;
+            } else if (i < 1000) {
+                var text = hundredName[numbers[Math.floor(i / 100)]] + " " + tenName[numbers[(Math.floor(i / 10)) - (Math.floor(i / 100) * 10)]] + " " + oneName[numbers[i - (Math.floor(i / 100) * 100) - ((Math.floor(i / 10) - (Math.floor(i / 100) * 10)) * 10)]];
+            } else if (i == 1000) {
+                var text = thousandName[numbers[Math.floor(i / 1000)]] + " baybeeee";
+            }
+
+            const newElement = document.createElement("p");
+            const destination = document.getElementById("main");
+            const newText = document.createTextNode(i + ": " + text);
+
+            if (i > 0) {
+                newElement.appendChild(newText);
+                destination.appendChild(newElement);
+            }
+        }
+
+    </script>
+</body>
+</html>
