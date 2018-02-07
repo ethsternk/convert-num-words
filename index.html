@@ -44,7 +44,7 @@
             } else if (i - (Math.floor(i / 100) * 100) < 20 && i != 1000) {
                 var text = hundredName[numbers[Math.floor(i / 100)]] + " " + oneName[numbers[i - (Math.floor(i / 100) * 100)]];;
             } else if (i < 1000) {
-                var text = hundredName[numbers[Math.floor(i / 100)]] + " " + tenName[numbers[(Math.floor(i / 10)) - (Math.floor(i / 100) * 10)]] + " " + oneName[numbers[i - (Math.floor(i / 100) * 100) - ((Math.floor(i / 10) - (Math.floor(i / 100) * 10)) * 10)]];
+                var text = hundredName[numbers[Math.floor(i / 100)]] + " " + tenName[numbers[(Math.floor(i / 10)) - (Math.floor(i / 100) * 10)]] + " " + oneName[numbers[i - (Math.floor(i / 10) * 10)]];
             } else if (i == 1000) {
                 var text = thousandName[numbers[Math.floor(i / 1000)]] + " baybeeee";
             }
@@ -58,6 +58,10 @@
                 destination.appendChild(newElement);
             }
         }
+
+        // i - (Math.floor(i / 10) * 10)
+
+        // i - (Math.floor(i / 100) * 100) - ((Math.floor(i / 10) - (Math.floor(i / 100) * 10)) * 10)
 
     </script>
 </body>
